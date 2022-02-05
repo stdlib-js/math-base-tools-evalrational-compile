@@ -36,8 +36,26 @@ limitations under the License.
 
 ## Usage
 
+To use in Observable,
+
 ```javascript
-var compile = require( '@stdlib/math-base-tools-evalrational-compile' );
+compile = require( 'https://cdn.jsdelivr.net/gh/stdlib-js/math-base-tools-evalrational-compile@umd/bundle.js' )
+```
+
+To include the bundle in a webpage,
+
+```html
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/stdlib-js/math-base-tools-evalrational-compile@umd/bundle.js"></script>
+```
+
+If no recognized module system is present, access bundle contents via the global scope:
+
+```html
+<script type="text/javascript">
+(function () {
+    window.compile;
+})()
+</script>
 ```
 
 #### compile( P, Q )
@@ -125,11 +143,16 @@ The coefficients should be ordered in **ascending** degree, thus matching summat
 
 <!-- eslint no-undef: "error" -->
 
-```javascript
-var randu = require( '@stdlib/random-base-randu' );
-var round = require( '@stdlib/math-base-special-round' );
-var Float64Array = require( '@stdlib/array-float64' );
-var compile = require( '@stdlib/math-base-tools-evalrational-compile' );
+```html
+<!DOCTYPE html>
+<html lang="en">
+<body>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/stdlib-js/random-base-randu@umd/bundle.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/stdlib-js/math-base-special-round@umd/bundle.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/stdlib-js/array-float64@umd/bundle.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/stdlib-js/math-base-tools-evalrational-compile@umd/bundle.js"></script>
+<script type="text/javascript">
+(function () {
 
 var sign;
 var str;
@@ -153,6 +176,11 @@ for ( i = 0; i < P.length; i++ ) {
 // Compile a module for evaluating a rational function:
 str = compile( P, Q );
 console.log( str );
+
+})()
+</script>
+</body>
+</html>
 ```
 
 </section>
@@ -219,6 +247,13 @@ Copyright &copy; 2016-2021. The Stdlib [Authors][stdlib-authors].
 
 -->
 
+[umd]: https://github.com/umdjs/umd
+[es-module]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules
+
+[deno-url]: https://github.com/stdlib-js/math-base-tools-evalrational-compile/tree/deno
+[umd-url]: https://github.com/stdlib-js/math-base-tools-evalrational-compile/tree/umd
+[esm-url]: https://github.com/stdlib-js/math-base-tools-evalrational-compile/tree/esm
+
 [chat-image]: https://img.shields.io/gitter/room/stdlib-js/stdlib.svg
 [chat-url]: https://gitter.im/stdlib-js/stdlib/
 
@@ -228,7 +263,7 @@ Copyright &copy; 2016-2021. The Stdlib [Authors][stdlib-authors].
 
 [stdlib-license]: https://raw.githubusercontent.com/stdlib-js/math-base-tools-evalrational-compile/main/LICENSE
 
-[@stdlib/math/base/tools/evalrational]: https://github.com/stdlib-js/math-base-tools-evalrational
+[@stdlib/math/base/tools/evalrational]: https://github.com/stdlib-js/math-base-tools-evalrational/tree/umd
 
 </section>
 
