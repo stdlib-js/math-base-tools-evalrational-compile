@@ -62,13 +62,15 @@ var str = compile( P, Q );
 
 In the example above, the output `string` would correspond to the following module:
 
+<!-- eslint-disable no-unused-expressions -->
+
 ```javascript
 'use strict';
 
 // MAIN //
 
 /**
-* Evaluates a rational function, i.e., the ratio of two polynomials described by the coefficients stored in \\(P\\) and \\(Q\\).
+* Evaluates a rational function (i.e., the ratio of two polynomials described by the coefficients stored in \\(P\\) and \\(Q\\)).
 *
 * ## Notes
 *
@@ -194,11 +196,6 @@ For more information on the project, filing bug reports and feature requests, an
 
 ---
 
-## License
-
-See [LICENSE][stdlib-license].
-
-
 ## Copyright
 
 Copyright &copy; 2016-2022. The Stdlib [Authors][stdlib-authors].
@@ -233,8 +230,6 @@ Copyright &copy; 2016-2022. The Stdlib [Authors][stdlib-authors].
 [stdlib]: https://github.com/stdlib-js/stdlib
 
 [stdlib-authors]: https://github.com/stdlib-js/stdlib/graphs/contributors
-
-[stdlib-license]: https://raw.githubusercontent.com/stdlib-js/math-base-tools-evalrational-compile/main/LICENSE
 
 [@stdlib/math/base/tools/evalrational]: https://github.com/stdlib-js/math-base-tools-evalrational
 
