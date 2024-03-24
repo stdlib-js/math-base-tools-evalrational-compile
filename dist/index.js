@@ -1,5 +1,27 @@
-"use strict";var T=function(t,r){return function(){return r||t((r={exports:{}}).exports,r),r.exports}};var S=T(function(D,N){
-var v=require("path").join,s=require('@stdlib/fs-read-file/dist').sync,a=require('@stdlib/string-replace/dist'),o=require('@stdlib/assert-is-integer/dist').isPrimitive,u={encoding:"utf8"},l=v(__dirname,"templates"),I=s(v(l,"coefficient_ratio.js.txt"),u),m=s(v(l,"evalrational.js.txt"),u),L=s(v(l,"loop.js.txt"),u),c=s(v(l,"nan.js.txt"),u),h=66;function E(t){var r=t.toString();return o(t)&&(r+=".0"),r}function g(t){var r,i,n,e;for(i=t.length,n=i-1,r="",e=0;e<i;e++)r+="	"+t[e].toString(),o(t[e])&&(r+=".0"),e<n&&(r+=",\n");return r}function _(t){var r,i,n,e;for(i=t.length,n=i-1,r=t[0].toString(),o(t[0])&&(r+=".0"),e=1;e<i;e++)r+=" + (x * ",e<n&&(r+="("),r+=t[e].toString(),o(t[e])&&(r+=".0");for(e=0;e<2*n-1;e++)r+=")";return r}function A(t){var r,i,n;for(i=t.length-1,r=t[i].toString(),o(t[i])&&(r+=".0"),n=i-1;n>=0;n--)r+=" + (x * ",n>0&&(r+="("),r+=t[n].toString(),o(t[n])&&(r+=".0");for(n=0;n<2*i-1;n++)r+=")";return r}function f(t,r,i){var n=a(t,"{{"+r+"}}",i);return i.length>h?n=a(n,"{{"+r+"_ESLINT}}"," // eslint-disable-line max-len"):n=a(n,"{{"+r+"_ESLINT}}",""),n}function p(t,r){var i,n;return n=t.length,n===0||n!==r.length?c:n===1?a(I,"{{ratio}}",E(t[0]/r[0])):n>500?(i=a(L,"{{P}}",g(t)),i=a(i,"{{Q}}",g(r)),a(i,"{{ratio}}",E(t[0]/r[0]))):(i=f(m,"P_ASCENDING",_(t)),i=f(i,"Q_ASCENDING",_(r)),i=f(i,"P_DESCENDING",A(t)),i=f(i,"Q_DESCENDING",A(r)),a(i,"{{ratio}}",E(t[0]/r[0])))}N.exports=p
-});var d=S();module.exports=d;
 /** @license Apache-2.0 */
-//# sourceMappingURL=index.js.map
+
+'use strict';
+
+/**
+* Compile a module for evaluating a rational function.
+*
+* @module @stdlib/math-base-tools-evalrational-compile
+*
+* @example
+* var compile = require( '@stdlib/math-base-tools-evalrational-compile' );
+*
+* var P = [ -6.0, -5.0 ];
+* var Q = [ 3.0, 0.5 ];
+*
+* var str = compile( P, Q ); // ( -6*6^0 - 5*6^1 ) / ( 3*6^0 + 0.5*6^1 )
+* // returns <string>
+*/
+
+// MODULES //
+
+var main = require( './main.js' );
+
+
+// EXPORTS //
+
+module.exports = main;
