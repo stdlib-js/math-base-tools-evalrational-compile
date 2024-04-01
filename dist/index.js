@@ -1,27 +1,5 @@
+"use strict";var F=function(e,t){return function(){return t||e((t={exports:{}}).exports,t),t.exports}};var S=F(function(P,d){
+var f=require("path").join,s=require('@stdlib/fs-read-file/dist').sync,n=require('@stdlib/string-replace/dist'),v=require('@stdlib/assert-is-integer/dist').isPrimitive,g=require('@stdlib/array-float32/dist'),I=require('@stdlib/number-float64-base-to-float32/dist'),u={encoding:"utf8"},T=f(__dirname,"templates"),m=s(f(T,"coefficient_ratio.js.txt"),u),y=s(f(T,"evalrational.js.txt"),u),O=s(f(T,"evalrational.float32.js.txt"),u),h=s(f(T,"loop.js.txt"),u),j=s(f(T,"loop.float32.js.txt"),u),p=s(f(T,"nan.js.txt"),u),q=66;function _(e){var t=e.toString();return v(e)&&(t+=".0"),t}function c(e){var t,r,a,i;for(r=e.length,a=r-1,t="",i=0;i<r;i++)t+="	"+e[i].toString(),v(e[i])&&(t+=".0"),i<a&&(t+=",\n");return t}function L(e,t){var r,a,i,o;for(a=e.length,i=a-1,t==="float32"?r="float64ToFloat32(":r="",r+=e[0].toString(),v(e[0])&&(r+=".0"),o=1;o<a;o++)t==="float32"?(r+=" + float64ToFloat32(x * ",o<i&&(r+="float64ToFloat32(")):(r+=" + (x * ",o<i&&(r+="(")),r+=e[o].toString(),v(e[o])&&(r+=".0");for(o=0;o<2*i-1;o++)r+=")";return t==="float32"&&(r+=")"),r}function N(e,t){var r,a,i;for(a=e.length-1,t==="float32"?r="float64ToFloat32(":r="",r+=e[a].toString(),v(e[a])&&(r+=".0"),i=a-1;i>=0;i--)t==="float32"?(r+=" + float64ToFloat32(x * ",i>0&&(r+="float64ToFloat32(")):(r+=" + (x * ",i>0&&(r+="(")),r+=e[i].toString(),v(e[i])&&(r+=".0");for(i=0;i<2*a-1;i++)r+=")";return t==="float32"&&(r+=")"),r}function A(e,t,r){var a=n(e,"{{"+t+"}}",r);return r.length>q?a=n(a,"{{"+t+"_ESLINT}}"," // eslint-disable-line max-len"):a=n(a,"{{"+t+"_ESLINT}}",""),a}function C(e,t,r){var a,i,o,E,l;return a={dtype:"float64"},arguments.length>2&&(a.dtype=r.dtype||a.dtype),E=e.length,E===0||E!==t.length?p:(l=e[0]/t[0],a.dtype==="float32"&&(e=new g(e),t=new g(t),l=I(l)),E===1?n(m,"{{ratio}}",_(l)):E>500?(a.dtype==="float32"?i=j:i=h,o=n(i,"{{P}}",c(e)),o=n(o,"{{Q}}",c(t)),n(o,"{{ratio}}",_(l))):(a.dtype==="float32"?i=O:i=y,o=A(i,"P_ASCENDING",L(e,a.dtype)),o=A(o,"Q_ASCENDING",L(t,a.dtype)),o=A(o,"P_DESCENDING",N(e,a.dtype)),o=A(o,"Q_DESCENDING",N(t,a.dtype)),n(o,"{{ratio}}",_(l))))}d.exports=C
+});var D=S();module.exports=D;
 /** @license Apache-2.0 */
-
-'use strict';
-
-/**
-* Compile a module for evaluating a rational function.
-*
-* @module @stdlib/math-base-tools-evalrational-compile
-*
-* @example
-* var compile = require( '@stdlib/math-base-tools-evalrational-compile' );
-*
-* var P = [ -6.0, -5.0 ];
-* var Q = [ 3.0, 0.5 ];
-*
-* var str = compile( P, Q ); // ( -6*6^0 - 5*6^1 ) / ( 3*6^0 + 0.5*6^1 )
-* // returns <string>
-*/
-
-// MODULES //
-
-var main = require( './main.js' );
-
-
-// EXPORTS //
-
-module.exports = main;
+//# sourceMappingURL=index.js.map
